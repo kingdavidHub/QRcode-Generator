@@ -1,0 +1,28 @@
+:root {
+  --bg-color: hsl(220, 27%, 98%);
+}
+
+
+body {
+  background: var(--bg-color);
+}
+
+
+.qr_code img {
+  width:300px;
+  height: 300px;
+}
+
+.qr_code_main {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.download_qr_code {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+}
+

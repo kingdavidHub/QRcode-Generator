@@ -1,5 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import QRCode from 'qrcode';
 
 
 
@@ -14,8 +15,23 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 app.get('/', (req, res) => {
-  res.render('index.ejs');
+  res.render('index.ejs', { generatedQRcode: '' });;
 });
+
+app.post('/qrcode', async(req, res) => {
+  try {
+    if(!req.body.url){
+      res.redirect('/');
+    }
+    const generatedQRcode = await QRCode.toDataURL(req.body.url);
+    res.render('index.ejs', { generatedQRcode });
+  } catch (err) {
+    throw err;
+  }
+});
+
+
+
 
 
 

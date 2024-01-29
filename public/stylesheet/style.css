@@ -1,10 +1,17 @@
 :root {
   --bg-color: hsl(220, 27%, 98%);
+  
 }
 
 
 body {
   background: var(--bg-color);
+  background-image: url('/img/backgroundpattern-c0621009.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+
 }
 
 

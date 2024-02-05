@@ -4,6 +4,7 @@ import QRCode from 'qrcode';
 import favicon from'serve-favicon';
 import { dirname } from "path";
 import { fileURLToPath } from 'url';
+import errorJs from './middleware/error.js';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 
@@ -25,6 +26,9 @@ app.get('/', (req, res) => {
 
 app.post('/qrcode', async(req, res) => {
   try {
+    const { url } = req.body;
+    if (!url) throw err;
+
     // generate qrcode data
     const generatedQRcode = await QRCode.toDataURL(req.body.url, {
       scale: 8,
@@ -33,15 +37,15 @@ app.post('/qrcode', async(req, res) => {
 
 
     // save qrcode to file for download feature
-      QRCode.toFile('public/img/data/qrcode.png', req.body.url, function (err) {
+      QRCode.toFile('public/img/data/qrcode.png', url, function (err) {
       // new qrcode overwrites the old one
-      if (err) throw err;
-      console.log('File created!');
+        if (err) throw err;
+        console.log('File created!');
     });``
 
 
     // File overwrite and being passed 
-    res.render('index.ejs', { generatedQRcode, download: '/img/data/qrcode.png'});
+      res.render('index.ejs', { generatedQRcode, download: '/img/data/qrcode.png'});
   } catch (err) {
     throw err;
   }
@@ -60,6 +64,7 @@ app.use((err, req, res, next) => {
   res.redirect('/');
 });
 
+// app.use(errorJs);
 
 
 

@@ -5,10 +5,8 @@ const inputTextArea = document.querySelector("#url");
 
 // downloadButton.classList.add("disabled");
 
-submitButton.addEventListener("click", function(e) {
+submitButton.addEventListener("submit", function(e) {
 
-
-  
 
   // overide the download disabled buttton
   // downloadButton.classList.remove("disabled");

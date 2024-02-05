@@ -5,10 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>QRcode | Generator</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" integrity="sha512-dPXYcDub/aeb08c63jRq/k6GaKccl256JQy/AnOq7CAnEZ9FzSL9wSbcZkMp4R26vBsMLFYH4kQ67/bbV8XaCQ==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
   <link rel="stylesheet" href="/stylesheet/style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 </head>
 <body>
+
+  <!-- Header  -->
+  <%- include('./header.ejs') %>
+  
+
 
   <div class="qr_code_main mt-5">
     <main>
@@ -35,16 +41,16 @@
           <img src="<%= generatedQRcode %>" class="shadow-sm rounded mx-auto d-block" alt="...">
           <% } else { %>
           <!-- qrcode for null website or text pointing to google.com -->
-          <img src="img/default_qrcode.png" class="shadow-sm rounded mx-auto d-block" alt="...">  
+          <img src="img/default_qrcode.png" class="shadow-sm rounded mx-auto d-block" alt="QR code" aria-label="QR code image">  
         <% } %>
       </div>
     </form>
   
       <div class="download_qr_code">
         <% if(locals.download) { %>
-          <a class="btn btn-primary" id="download" href="<%= download %>" download><i class="bi bi-box-arrow-down"></i> Download QR code</a>
+          <a class="btn btn-primary" id="download" href="<%= download %>" download><i class="bi bi-box-arrow-down" aria-label="Download"></i> Download QR code</a>
         <% } else{ %>
-          <a class="btn btn-primary disabled" id="download" href="" download><i class="bi bi-box-arrow-down"></i> Download QR code</a>
+          <a class="btn btn-primary disabled" id="download" href="" download><i class="bi bi-box-arrow-down" aria-disabled="true"></i> Download QR code</a>
         <% } %>
       </div>
     </main>

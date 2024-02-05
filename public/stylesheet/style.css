@@ -33,3 +33,12 @@ body {
   margin-top: 2rem;
 }
 
+.qr-logo{
+  height: 32px;
+  padding-right: 1rem;
+}
+
+header .nav-btn {
+  border: none;
+  height: 32px;
+}
